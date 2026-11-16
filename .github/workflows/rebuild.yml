@@ -1,7 +1,7 @@
-# Rebuilds the site from the live Supabase menu every day (and on demand), commits only if something changed.
+# Rebuilds the static pages from the live Supabase menu every 15 minutes (and on demand), commits only if something changed.
 name: Rebuild site
 on:
-  schedule: [{cron: '17 3 * * *'}]
+  schedule: [{cron: '*/15 * * * *'}]
   workflow_dispatch:
 permissions: {contents: write}
 jobs:
