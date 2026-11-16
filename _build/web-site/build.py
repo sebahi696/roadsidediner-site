@@ -49,7 +49,7 @@ T = {
   dir='ltr', other='ar', other_label='عربي', home='Home', menu='Menu', locs='Locations', app='App', faq='FAQ',
   tagline='Your pit stop for tasty delights',
   title_home='The Roadside Diner | American Burgers & Fried Chicken in Beirut',
-  desc_home='American diner in Lebanon: smash-good burgers, crispy chicken, loaded fries and shakes. 3 branches – Karout Mall Hadath, Centro Mall Jnah, The Town Village Mansourieh. Order delivery or pickup.',
+  desc_home='American diner in Lebanon: burgers, crispy chicken, loaded fries and shakes at Karout Mall Hadath, Centro Mall Jnah and The Town Village Mansourieh. Delivery & pickup.',
   hero='Burgers, crispy chicken & loaded fries.',
   hero_sub='An American roadside diner in Lebanon, with three branches around Beirut. Eat in, pick up or get it delivered.',
   see_menu='See the menu', find='Find a branch', get_app='Get the app',
@@ -284,7 +284,7 @@ def page_locs(L):
 def page_branch(b, L):
     t = T[L]
     nm = f"{bname(b, L)} – {barea(b, L)}"
-    title = (f"ذا رود سايد داينر {bname(b, L)}، {barea(b, L)} | الهاتف والدوام" if L == 'ar' else f"The Roadside Diner {b['name_en']}, {b['area_en']} | Hours, Phone & Delivery")
+    title = (f"ذا رود سايد داينر {bname(b, L)}، {barea(b, L)} | الهاتف والدوام" if L == 'ar' else f"Roadside Diner {b['name_en']}, {b['area_en']} | Hours & Phone")
     desc = (f"فرع ذا رود سايد داينر في {bname(b, L)}، {barea(b, L)}: مفتوح يومياً {b['o']}–{b['c']}. اتصل {b['phone']}. برغر، دجاج مقرمش، توصيل واستلام." if L == 'ar'
             else f"The Roadside Diner at {b['name_en']}, {b['area_en']}, Lebanon: open daily {b['o']}–{b['c']}. Call {b['phone']}. Burgers, crispy chicken, delivery and pickup.")
     mz = f"https://www.openstreetmap.org/export/embed.html?bbox={b['lng']-0.006},{b['lat']-0.004},{b['lng']+0.006},{b['lat']+0.004}&layer=mapnik&marker={b['lat']},{b['lng']}"
