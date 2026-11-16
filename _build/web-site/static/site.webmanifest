@@ -1,0 +1,1 @@
+{"name": "The Roadside Diner", "short_name": "Roadside", "start_url": "/", "display": "standalone", "background_color": "#FFF6EA", "theme_color": "#F05424", "icons": [{"src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png"}]}

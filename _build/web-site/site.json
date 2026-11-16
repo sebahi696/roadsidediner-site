@@ -1,0 +1,18 @@
+{
+  "domain": "https://roadsidediner.app",
+  "name": "The Roadside Diner",
+  "short": "Roadside",
+  "email": "theroadsidebeirut@gmail.com",
+  "instagram": "https://www.instagram.com/theroadsidediner.leb/",
+  "facebook": "https://www.facebook.com/theRoadsidediner.leb",
+  "tiktok": "https://www.tiktok.com/@theroadsidediner.leb",
+  "stores": {
+    "live": false,
+    "android": "https://play.google.com/store/apps/details?id=com.theroadside.app",
+    "ios": "https://apps.apple.com/app/id6833419318"
+  },
+  "ga4_id": "",
+  "gsc_meta": "",
+  "price_range": "$$",
+  "cuisine": ["American", "Burgers", "Fried chicken", "Diner"]
+}
