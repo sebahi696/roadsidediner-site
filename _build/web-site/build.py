@@ -146,6 +146,9 @@ def url(L, p=''):  # p like '' | 'menu/' | 'locations/x/'
     return ('/ar/' if L == 'ar' else '/') + p
 
 GA = SITE.get('ga4_id', '').strip()
+def live(L):
+    cfg = {'url': CFG['SUPABASE_URL'], 'key': CFG['SUPABASE_KEY'], 'L': L, 't': {'from': T[L]['from_'], 'notAt': T[L]['not_at'], 'deal': T[L]['deal']}}
+    return f'<script>window.RS={json.dumps(cfg, ensure_ascii=False)}</script><script src="/assets/live.js?v={TODAY}" defer></script>'
 def head(L, title, desc, path, extra_ld=(), og_img='/assets/og.jpg'):
     alt = 'ar' if L == 'en' else 'en'
     ld = ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False, separators=(",", ":"))}</script>' for x in extra_ld)
@@ -162,7 +165,7 @@ def head(L, title, desc, path, extra_ld=(), og_img='/assets/og.jpg'):
 <link rel="icon" href="/assets/favicon.png" type="image/png"><link rel="apple-touch-icon" href="/assets/icon-192.png"><link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cairo:wght@400;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v={TODAY}">{gsc}{ga}{ld}</head>
+<link rel="stylesheet" href="/assets/site.css?v={TODAY}">{gsc}{ga}{ld}{live(L)}</head>
 <body class="{L}"><a class="skip" href="#main">Skip to content</a>
 <header class="top"><div class="wrap nav"><a class="brand" href="{url(L)}"><img src="/assets/logo.png" alt="The Roadside Diner" width="116" height="40"></a>
 <nav><a href="{url(L, 'menu/')}">{T[L]['menu']}</a><a href="{url(L, 'locations/')}">{T[L]['locs']}</a><a href="{url(L, 'app/')}">{T[L]['app']}</a><a href="{url(L, 'faq/')}">{T[L]['faq']}</a>
@@ -191,7 +194,7 @@ def card(i, L, big=False):
         note = f'<p class="na">{T[L]["not_at"]} {E(names)}</p>'
     tag = f'<span class="tag">{E(i["tag"] or T[L]["deal"])}</span>' if (i.get('tag') or i.get('is_deal')) else ''
     src = img(i['image_path'] if big else (i.get('thumb_path') or i['image_path']))
-    return (f'<article class="item"><div class="ph"><img src="{src}" alt="{E(iname(i, L))}" loading="lazy" decoding="async" width="400" height="300">{tag}</div>'
+    return (f'<article class="item" data-id="{i["id"]}"><div class="ph"><img src="{src}" alt="{E(iname(i, L))}" loading="lazy" decoding="async" width="400" height="300">{tag}</div>'
             f'<div class="tx"><h3>{E(iname(i, L))}</h3><p>{E(idesc(i, L))}</p>{note}<span class="pr" dir="ltr">{price(i, L)}</span></div></article>')
 
 # ---------------------------------------------------------------- structured data
@@ -253,7 +256,7 @@ def page_home(L):
     body = f'''<section class="hero"><div class="wrap"><p class="kicker">{t['tagline']}</p><h1>{t['hero']}</h1><p class="lead">{t['hero_sub']}</p>
 <div class="ctas"><a class="btn" href="{url(L, 'menu/')}">{t['see_menu']}</a><a class="btn ghost" href="{url(L, 'locations/')}">{t['find']}</a></div></div></section>
 <section class="wrap whys">{why}</section>
-<section class="wrap"><h2>{t['popular']}</h2><div class="grid">{''.join(card(i, L) for i in picks[:8])}</div><p class="more"><a class="btn" href="{url(L, 'menu/')}">{t['all_menu']}</a></p></section>
+<section class="wrap"><h2>{t['popular']}</h2><div class="grid" id="fav">{''.join(card(i, L) for i in picks[:8])}</div><p class="more"><a class="btn" href="{url(L, 'menu/')}">{t['all_menu']}</a></p></section>
 <section class="band"><div class="wrap"><h2>{t['locs_h']}</h2><div class="branches">{br}</div></div></section>
 <section class="wrap appcta"><h2>{t['app_h']}</h2><p>{t['app_sub']}</p>{store_buttons(L)}<p><a href="{url(L, 'app/')}">{t['get_app']} →</a></p></section>'''
     ld = [org_ld(), website_ld(L)] + [restaurant_ld(b, L) for b in branches]
@@ -263,14 +266,14 @@ def branch_card(b, L, full=False):
     t = T[L]
     maps = f"https://www.google.com/maps/search/?api=1&query={b['lat']},{b['lng']}"
     h = f'<h3><a href="{url(L, "locations/" + b["slug"] + "/")}">{E(bname(b, L))}</a></h3>' if not full else ''
-    return (f'<div class="branch">{h}<p class="area">{E(barea(b, L))}</p><p>{t["open_daily"]} <b dir="ltr">{b["o"]} – {b["c"]}</b></p>'
-            f'<p><a class="btn sm" href="tel:{b["tel"]}">{t["call"]} <span dir="ltr">{E(b["phone"])}</span></a> <a class="btn sm ghost" href="{maps}" rel="noopener">{t["directions"]}</a></p></div>')
+    return (f'<div class="branch">{h}<p class="area">{E(barea(b, L))}</p><p>{t["open_daily"]} <b dir="ltr" data-hours="{b["id"]}">{b["o"]} – {b["c"]}</b></p>'
+            f'<p><a class="btn sm" href="tel:{b["tel"]}">{t["call"]} <span dir="ltr" data-phone="{b["id"]}">{E(b["phone"])}</span></a> <a class="btn sm ghost" href="{maps}" rel="noopener">{t["directions"]}</a></p></div>')
 
 def page_menu(L):
     t = T[L]
     chips = ''.join(f'<a href="#c{c["id"]}">{E(cname(c, L))}</a>' for c in cats)
     secs = ''.join(f'<section id="c{c["id"]}" class="cat"><h2>{E(cname(c, L))}</h2><div class="grid">{"".join(card(i, L) for i in by_cat[c["id"]])}</div></section>' for c in cats)
-    body = f'<section class="wrap pagehead"><h1>{t["menu_h"]}</h1><p class="note">{t["menu_note"]}</p><nav class="chips" aria-label="{t["menu"]}">{chips}</nav></section><div class="wrap">{secs}</div>'
+    body = f'<section class="wrap pagehead"><h1>{t["menu_h"]}</h1><p class="note">{t["menu_note"]}</p><nav class="chips" aria-label="{t["menu"]}">{chips}</nav></section><div class="wrap" id="menu-live">{secs}</div>'
     return head(L, t['title_menu'], t['desc_menu'], 'menu/', [menu_ld(L), crumbs(L, (t['menu'], url(L, 'menu/')))]) + body + foot(L)
 
 def page_locs(L):
@@ -289,7 +292,7 @@ def page_branch(b, L):
     others = ''.join(f'<li><a href="{url(L, "locations/" + o["slug"] + "/")}">{E(bname(o, L))} – {E(barea(o, L))}</a></li>' for o in branches if o is not b)
     body = f'''<section class="wrap pagehead"><h1>{E(nm)}</h1><p class="lead">{t['delivery']}</p></section>
 <div class="wrap two">{branch_card(b, L, True)}<iframe class="map" title="{E(nm)}" src="{mz}" loading="lazy"></iframe></div>
-<section class="wrap"><h2>{t['hours']}</h2><table class="hours"><tr><td>{t['open_daily']}</td><td dir="ltr">{b['o']} – {b['c']}</td></tr><tr><td>{t['phone']}</td><td dir="ltr"><a href="tel:{b['tel']}">{E(b['phone'])}</a></td></tr></table>
+<section class="wrap"><h2>{t['hours']}</h2><table class="hours"><tr><td>{t['open_daily']}</td><td dir="ltr" data-hours="{b['id']}">{b['o']} – {b['c']}</td></tr><tr><td>{t['phone']}</td><td dir="ltr"><a href="tel:{b['tel']}">{E(b['phone'])}</a></td></tr></table>
 <p><a class="btn" href="{url(L, 'menu/')}">{t['see_menu']}</a> <a class="btn ghost" href="{url(L, 'app/')}">{t['order_here']}</a></p>
 {f'<p class="note">{t["not_at"]} {E(bname(b, L))}: {E(", ".join(iname(i, L) for i in na[:30]))}{"…" if len(na) > 30 else ""}</p>' if na else ''}
 <h2>{'فروع أخرى' if L == 'ar' else 'Other branches'}</h2><ul>{others}</ul></section>'''
