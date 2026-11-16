@@ -1,0 +1,37 @@
+# The Roadside Diner
+
+> American roadside diner in Lebanon (burgers, fried chicken, loaded fries, shakes) with 3 branches around Beirut, delivery, pickup and the Roadside ordering app.
+
+## Branches
+- [Karout Mall, Al Hadath](https://roadsidediner.app/locations/karout-mall-hadath/): open daily 11:00–22:00, phone +961 71 53 57 57, coordinates 33.85597,35.52684
+- [Centro Mall, Jnah](https://roadsidediner.app/locations/centro-mall-jnah/): open daily 11:00–22:00, phone +961 81 53 57 57, coordinates 33.86051,35.49009
+- [The Town Village, Mansourieh](https://roadsidediner.app/locations/town-village-mansourieh/): open daily 12:00–23:30, phone +961 76 53 57 57, coordinates 33.85439,35.56975
+
+## Key pages
+- [Menu with prices (USD)](https://roadsidediner.app/menu/)
+- [Locations](https://roadsidediner.app/locations/)
+- [Roadside app](https://roadsidediner.app/app/)
+- [FAQ](https://roadsidediner.app/faq/)
+- [Arabic site](https://roadsidediner.app/ar/)
+
+## Facts
+- Payment: cash on delivery or pickup (online payment coming soon).
+- Prices in US dollars; some items vary by branch.
+- Contact: theroadsidebeirut@gmail.com
+- Instagram: https://www.instagram.com/theroadsidediner.leb/
+
+## Menu summary
+- Offers: Chicken Feast For Two $20.00; Roadside Duo For Two $18.00; Cheetos Crunch Meal For One $10.00
+- Appetizers: Viral Mozzarella Breaks Asian Glaze $8.00; Viral Mozzarella Breaks Buffalo $8.00; Roadside Combo $17.50; Mozzarella Sticks $5.50; Cheddar Cheese Balls $6.00; Chicken Tenders $7.50; Classic Crispy Shrimp $7.50; Chicken Wings $4.50; Cheese Garlic Bread $4.00; Cheesy Chicken Fries $8.50; Rasta Chicken $8.00; Loaded Chicken Fajita Fries $9.00; Chicken Loaded Mac $9.00; Crispy Fries $4.50; Seasoned Fries $4.50; Twister Fries $6.00; Wedges $4.00
+- Salads: Seafood Fusion $11.50; Chicken Caesar Salad $8.50; Mexicano Salad $10.50; Vibrant Chicken Kale $9.00; Berry Bliss Quinoa $9.50
+- Burgers: Cajun Beef Burger $10.00; Classic Burger $8.00; Mushroom Feast $10.00; Cheddar Madness $10.50; Melted Mozzarella $9.00; Truffle Temptation $9.00; Double Trouble $12.00; Honey Mustard Chick $8.00; Classic Chicken $6.50; Crispy Dynamite Chicken $7.00; Cheetos Chicken $7.50; Buffalo Chicken Burger $8.50; BBQ Crunch Burger $7.50
+- Sandwiches: Mexican Beef Steak Sandwich $11.00; Chicken Avocado $8.00; Chicken Sub $8.00; Buffalo Chick $7.50; Steak Sandwich $10.50; Club Sandwich $11.00; Crispy Buffalo Wrap $6.00; Crispy BBQ Wrap $6.00; Crispy Honey Mustard Wrap $6.00
+- Pasta: Famous Alfredo $10.00; Dreamy Penne Pesto $7.50; Truffle' Oh Bacon Pasta $9.50
+- Kids Corner: Nuggets $8.00; Mini Trio Burger $9.50; Crispy Chicken $9.00; Kids Beef Burger $9.00; Kids Chicken Burger $8.00
+- Mains: Grilled Chicken $14.00; Creamy Paprika Chicken $12.50; Truffle Beef Steak $17.00; Fillet Mignon $18.00; Fish & Chips Platter $13.50; Chicken Escalope Platter $14.00
+- Light Menu: Grilled Potato $3.00; Light Greek Salad $6.50; Fit & Light Beef Burger $9.50; Fit & Light Chicken Burger $8.50; Light Mix Platter $11.50; Honey Chicken Sandwich $10.00
+- Dessert: Fondant Au Chocolat $7.50; Brownie $7.50
+- Sweet Crepes: Choco Delight $5.00; Banana Bliss $5.50; Berry Blanc $6.00; Pistachio Crepe $7.00
+- Shakes: Vanilla Shake $4.50; Chocolate Shake $4.50; Strawberry Shake $4.50; Banana Shake $4.50
+- Cocktails: Jimmy Drink $4.00; Tropical $5.00; Special Drink $4.00
+- Beverages: Fresh Orange $3.00; Apple Juice $2.50; Pineapple Juice $2.50; Fresh Lemonade $3.00; Fresh Minted Lemonade $3.50; Strawberry Lemonade $3.50; Mirinda $2.00; Diet 7up $2.00; 7up $2.00; Diet Pepsi $2.00; Pepsi $2.00; Ice Tea Peach $2.50; Large Water $2.00; Small Water $1.00; S.Pellegrino Small $3.50; Redbull $4.00
